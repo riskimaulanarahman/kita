@@ -25,6 +25,9 @@ class GeneratemenuController extends Controller
         //     ->where('route', 'api')
         //     ->first(); //api
         // }
+        if(!$sidemenu) {
+            abort('404');
+        }
 
             $sequence = Sequence::select(['title', 'is_active'])
             ->where('id', $sidemenu->sequence_id)
