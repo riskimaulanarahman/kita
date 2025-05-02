@@ -21,6 +21,8 @@ class Produk extends Model
         'code_id',
         'user_id',
         'requestStatus',
+        'phase',
+        'category',
     ];
 
     protected $casts = [

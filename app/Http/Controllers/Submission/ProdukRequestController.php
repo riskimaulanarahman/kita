@@ -99,6 +99,7 @@ class ProdukRequestController extends Controller
             // Tambahkan user_id ke dalam data request
             $requestData['user_id'] = $this->getAuth()->id;
             $requestData['requestStatus'] = 0;
+            $requestData['phase'] = 0;
             $requestData['category'] = 'Produk';
 
             // Buat data baru pada tabel utama
