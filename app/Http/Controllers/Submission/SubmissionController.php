@@ -163,13 +163,10 @@ class SubmissionController extends Controller
                 $detailsproduk = DB::table('request_produk_detail')
                 ->where('req_id',$id)
                 ->get();
-
-                $detailsampel = DB::table('request_sampel_detail')
-                ->where('req_id',$id)
-                ->get();
+                // dd(count($detailsproduk));
 
                 if (count($detailsproduk) < 1) {
-                    return response()->json(["status" => "error", "module" => $modulename, "message" => "Error: Detail not found. Please input the correct information."]);
+                    return response()->json(["status" => "error", "module" => $modulename, "message" => "Error: Detail Produk not found. Please input the correct information."]);
                 }
 
                 // Cek requestStatus dan status_produk
@@ -188,8 +185,12 @@ class SubmissionController extends Controller
                     }
                 }
 
-                if (count($detailsampel) < 1) {
-                    return response()->json(["status" => "error", "module" => $modulename, "message" => "Error: Detail not found. Please input the correct information."]);
+                $detailsampel = DB::table('request_sampel_detail')
+                ->where('req_id',$id)
+                ->get();
+
+                if ($getSubmissionData->phase == 2 && count($detailsampel) < 1) {
+                    return response()->json(["status" => "error", "module" => $modulename, "message" => "Error: Detail Sampel not found. Please input the correct information."]);
                 }
 
                 // Cek requestStatus dan status_produk
