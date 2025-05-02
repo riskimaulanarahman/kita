@@ -223,9 +223,9 @@ class ProdukRequestController extends Controller
                     Attachment::where('req_id', $id)
                         ->where('module_id', $module->id)
                         ->delete();
-                        foreach ($attachments as $attachment) {
-                            unlink($this->copyuploadpath() .$attachment->path);
-                        }
+                        // foreach ($attachments as $attachment) {
+                        //     unlink($this->copyuploadpath() .$attachment->path);
+                        // }
 
                     // Hapus data pada tabel utama
                     
