@@ -103,9 +103,9 @@ class PembayaranRequestDetailController extends Controller
                 $tpph = $tsampel * $pph;
                 $tppn = $tsampel * $ppn;
 
-                $requestData['amount'] = $sampel + $tpph + $tppn;
+                $requestData['amount'] = $tsampel + $tpph + $tppn;
             } else {
-                $requestData['amount'] = ($sampel * 200000);
+                $requestData['amount'] = $tsampel;
             }
 
             $data->update($requestData);
