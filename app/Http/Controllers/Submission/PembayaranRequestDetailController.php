@@ -95,9 +95,17 @@ class PembayaranRequestDetailController extends Controller
 
             if($request->pph_type == 'PPH23') {
                 // $requestData['amount'] = ($sampel*153061)-2%;
-                $requestData['amount'] = ($sampel * 153061) - (($sampel * 153061) * 0.02);
+                $harga = 200000;
+                $pph = 0.02;
+                $ppn = 0.11;
+
+                $tsampel = $sampel * $harga;
+                $tpph = $tsampel * $pph;
+                $tppn = $tsampel * $ppn;
+
+                $requestData['amount'] = $sampel + $tpph + $tppn;
             } else {
-                $requestData['amount'] = ($sampel * 150000);
+                $requestData['amount'] = ($sampel * 200000);
             }
 
             $data->update($requestData);
