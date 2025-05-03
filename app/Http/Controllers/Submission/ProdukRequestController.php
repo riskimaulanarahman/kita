@@ -9,6 +9,10 @@ use Illuminate\Support\Facades\Mail;
 use App\Mail\SubmissionMail;
 
 use App\Models\Submission\Produk;
+use App\Models\Submission\Produkdetail;
+use App\Models\Submission\Sampeldetail;
+use App\Models\Submission\Perjanjiandetail;
+use App\Models\Submission\Pembayarandetail;
 use App\Models\ApproverListReq;
 use App\Models\ApproverListHistory;
 use App\Models\Approvaluser;
@@ -107,6 +111,9 @@ class ProdukRequestController extends Controller
 
             // Simpan id dari data baru
             $req_id = $newData->id;
+
+            Perjanjiandetail::create(['req_id' => $req_id]);
+            Pembayarandetail::create(['req_id' => $req_id]);
 
             // $this->createApproverList($this->modulename, $req_id);
             
@@ -222,6 +229,14 @@ class ProdukRequestController extends Controller
                         ->get();
                     Attachment::where('req_id', $id)
                         ->where('module_id', $module->id)
+                        ->delete();
+                    Produkdetail::where('req_id', $id)
+                        ->delete();
+                    Sampeldetail::where('req_id', $id)
+                        ->delete();
+                    Perjanjiandetail::where('req_id', $id)
+                        ->delete();
+                    Pembayarandetail::where('req_id', $id)
                         ->delete();
                         // foreach ($attachments as $attachment) {
                         //     unlink($this->copyuploadpath() .$attachment->path);
