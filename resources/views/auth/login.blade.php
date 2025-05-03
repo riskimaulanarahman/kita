@@ -41,7 +41,7 @@
                                                                 </div>
 
                                                                 <div class="form-floating form-floating-custom mb-4 auth-pass-inputgroup">
-                                                                    <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" id="password-input" placeholder="Enter Password">
+                                                                    <input type="password" class="form-control pe-5 @error('password') is-invalid @enderror" name="password" id="password-input" placeholder="Enter Password (length min.6)">
                                                                     @error('password')
                                                                         <span class="invalid-feedback" role="alert">
                                                                             <strong>{{ $message }}</strong>
@@ -157,6 +157,7 @@
                             <div class="mb-3">
                                 <label for="password" class="form-label">Password</label>
                                 <input type="password" class="form-control" id="password" name="password" required>
+                                <small class="text-muted">Length Min.6</small>
                             </div>
                         </div>
                         <div class="modal-footer">
